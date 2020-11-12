@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'ProductController@index');
 Route::get('/create', 'ProductController@create');
 Route::get('/edit/{id}', 'ProductController@edit');
+Route::delete('/delete/{id}', 'ProductController@destroy');
