@@ -26,6 +26,26 @@
             @endforeach
         </tbody>
     </table>
+
+    <h2>Produtos com baixo estoque</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <td>Nome</td>
+            <td>SKU</td>
+            <td>Quantidade</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($data['lowStockProducts'] as $product)
+            <tr>
+                <td>{{ $product->name }} </td>
+                <td>{{ $product->sku }}</td>
+                <td>{{ $product->quantity_available }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 <div>
 </div>
 @endsection 
