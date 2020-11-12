@@ -1,5 +1,5 @@
-@extends('app') 
-@section('main')
+@extends('layouts') 
+@section('content')
 <div class="row">
     <div class="col-sm-8 offset-sm-2">
         <h1 class="display-3">Baixa no produto</h1>
