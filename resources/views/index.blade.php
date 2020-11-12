@@ -23,6 +23,24 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($products as $product)
+            <tr>
+                <td>{{ $product->id }}</td>
+                <td>{{ $product->name }} </td>
+                <td>{{ $product->sku }}</td>
+                <td>{{ $product->updated_at }}</td>
+                <td>
+                    <a href="edit/{{ $product->id }}" class="btn btn-primary">Editar</a>
+                </td>
+                <td>
+                    <form action="delete/{{ $product->id }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger" type="submit">Remover</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
         </tbody>
     </table>
 <div>
