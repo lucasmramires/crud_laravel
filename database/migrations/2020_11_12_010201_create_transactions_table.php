@@ -14,8 +14,15 @@ class CreateTransactionsTable extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('product_transaction_id');
+            $table->integer('product_id');            
+            $table->integer('quantity');
+            $table->string('type', 16);
+            $table->dateTime('created_at');
             $table->timestamps();
+
+            // adicao de chave estrangeira e referencia do product_id no product table
+            $table->foreign('product_id')->references('product_id')->on('product');
         });
     }
 
