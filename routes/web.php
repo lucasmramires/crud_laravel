@@ -17,3 +17,5 @@ Route::get('/', 'ProductController@index');
 Route::get('/create', 'ProductController@create');
 Route::get('/edit/{id}', 'ProductController@edit');
 Route::delete('/delete/{id}', 'ProductController@destroy');
+Route::post('/store', 'ProductController@store');
+Route::post('/update/{id}', 'ProductController@update');
