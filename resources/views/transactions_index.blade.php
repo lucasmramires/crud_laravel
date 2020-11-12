@@ -6,6 +6,26 @@
     <h1 class="display-3">Relatório</h1>
     <a href="/" class="btn btn-primary">Voltar para home</a>
     <h2>Movimentação do dia</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <td>Nome</td>
+            <td>SKU</td>
+            <td>Quantidade</td>
+            <td>Modo</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($data['transactions'] as $transaction)
+            <tr>
+                <td>{{ $transaction->name }} </td>
+                <td>{{ $transaction->sku }}</td>
+                <td>{{ $transaction->quantity }}</td>
+                <td>{{ $transaction->type }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 <div>
 </div>
 @endsection 
