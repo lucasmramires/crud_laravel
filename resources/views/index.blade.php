@@ -13,14 +13,20 @@
         {{ session()->get('success') }}  
         </div>
     @endif
+    @if (session()->get('alert'))
+      <div class="alert alert-danger">
+        {{ session()->get('alert') }}  
+      </div>
+      <br /> 
+    @endif
     <table class="table table-striped">
         <thead>
             <tr>
             <td>ID</td>
             <td>Nome</td>
             <td>SKU</td>
-            <td>Modificado em</td>
-            <td colspan = 2>Ações</td>
+            <td>Quantidade</td>
+            <td>Ações</td>
             </tr>
         </thead>
         <tbody>
@@ -37,8 +43,16 @@
                     <form action="delete/{{ $product->id }}" method="post">
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger" type="submit">Remover</button>
+                        <button class="btn btn-danger" type="submit">Remover</button>
                     </form>
+                </td>
+                <td>{{ $product->id }}</td>
+                <td>{{ $product->name }} </td>
+                <td>{{ $product->sku }}</td>
+                <td>{{ $product->quantity_available }}</td>
+                <td>
+                    <a href="increase/{{ $product->id }}" class="btn btn-primary">Adicionar</a>
+                    <a href="decrease/{{ $product->id }}" class="btn btn-warning">Baixa</a>
                 </td>
             </tr>
             @endforeach
