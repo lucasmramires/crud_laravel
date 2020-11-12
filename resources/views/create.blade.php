@@ -39,6 +39,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Salvar</button>
+                <a href="/" class="btn btn-warning">Cancelar</a>
             </form>
         </div>
     </div>
