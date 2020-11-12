@@ -18,7 +18,6 @@ class CreateProductsTable extends Migration
             $table->string('name', 64);
             $table->string('sku', 30)->unique();
             $table->string('description', 256);
-            $table->double('price');
             $table->integer('quantity_available');
             $table->timestamps();
         });
