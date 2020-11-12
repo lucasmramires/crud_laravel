@@ -6,6 +6,32 @@
 <div class="row">
     <div class="col-sm-8 offset-sm-2">
         <h1 class="display-3">Adicionar produto</h1>
+        <div>
+            <form method="post" action="store">
+                @csrf
+                <div class="form-group">    
+                    <label for="name">Nome:*</label>
+                    <input type="text" class="form-control" name="name"/>
+                </div>
+
+                <div class="form-group">    
+                    <label for="sku">SKU:*</label>
+                    <input type="text" class="form-control" name="sku"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Descrição:</label>
+                    <input type="text" class="form-control" name="description"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity_available">Quantidade em estoque:</label>
+                    <input type="text" class="form-control" name="quantity_available"/>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
     </div>
 </div>
-@endsection
+@endsection 
