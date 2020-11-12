@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Route::put('baixar-produtos/{id}', 'ApiController@updateDecrease');
+Route::put('adicionar-produtos/{id}', 'ApiController@updateIncrease');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
