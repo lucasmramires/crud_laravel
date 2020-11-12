@@ -77,9 +77,10 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view('edit', compact('product'));
     }
 
     /**
@@ -89,9 +90,23 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'quantity_available'=>'required|regex:/^-?[0-9]+$/'
+        ]); 
+
+        $product = Product::find($id);
+
+        if($product->quantity_available >= $request->get('quantity_available')) {
+            $product->quantity_available -= $request->get('quantity_available');
+            $product->save();
+        } else {
+            return back()->withErrors('Não existe quantidade disponível para baixa.'); 
+        }      
+
+
+        return redirect('/')->with('success', 'Baixa inserida com sucesso');
     }
 
     /**
@@ -100,8 +115,11 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete(); // Easy right?
+ 
+        return redirect('/')->with('success', 'Produto removido com sucesso.'); 
     }
 }
