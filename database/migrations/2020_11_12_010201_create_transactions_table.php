@@ -15,7 +15,7 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->bigIncrements('product_transaction_id');
-            $table->integer('product_id');            
+            $table->foreignId('product_id')->constrained();           
             $table->integer('quantity');
             $table->string('type', 16);
             $table->dateTime('created_at');
